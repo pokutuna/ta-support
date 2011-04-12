@@ -1,0 +1,15 @@
+class_id: 2
+username: M0000
+password: your_password
+ext:
+  - doc
+  - java
+download_to: ./
+students:
+  - '0001'
+  - '0002'
+  - '0003'
+  - '0004'
+  - '0005'
+  - '0006'
+  - '0007'
