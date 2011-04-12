@@ -2,24 +2,32 @@ require 'rake/clean'
 
 SOURCES = FileList["**/*.java"]
 CLASSES = SOURCES.ext('class')
-  
-task :default => :exec
 
-desc 'exec each class file'
-file :exec do
-  CLASSES.each do |c|
-    p = File.split(c)
-    sh "java -cp #{p[0]} -Dfile.encoding=UTF-8 #{p[1].sub(/\.class$/, '')} || echo failed!"
-    gets
+task :default => :run
+  
+desc 'download reports with arg'
+file :download, "R"
+file :download do |x, args|
+  sh "ruby downloader.rb #{args.R}"
+end
+
+desc 'compile all .java files'
+file :compile do
+  SOURCES.each do |s|
+    sh "javac -J-Dfile.encoding=UTF-8 #{s}"
   end
 end
 
-rule '.class' => ['.java'] do |t|
-  sh "javac -J-Dfile.encoding=UTF-8 #{t.source}"
+desc 'exec each class file with classpath'
+task :exec do
+  CLASSES.each do |c|
+    p = File.split(c)
+    sh "java -cp #{p[0]} -Dfile.encoding=UTF-8 #{p[1].sub(/\.class$/, '')} || echo failed!"
+    STDIN.gets
+  end
 end
 
-desc 'download reports with arg'
-task :download, "R"
-task :download do |x, args|
-  sh "ruby downloader.rb #{args.R}"
-end
+#rule '.class' => ['.java'] do |t|
+#  sh "javac -J-Dfile.encoding=UTF-8 #{t.source}"
+#end
+
