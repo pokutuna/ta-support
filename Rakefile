@@ -3,7 +3,7 @@ require 'rake/clean'
 SOURCES = FileList["**/*.java"]
 CLASSES = SOURCES.ext('class')
 
-task :default => :run
+task :default => :exec
   
 desc 'download reports with arg'
 file :download, "R"
