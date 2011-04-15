@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+require 'rubygems'
 require 'mechanize'
 require 'fileutils'
 require 'yaml'
