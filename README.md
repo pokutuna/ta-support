@@ -2,7 +2,6 @@
 劣悪なTA環境を改善するスクリプト  
 mechanize、rakeに依存
 
-
 ## conf.yaml.sample
 コンフィグのサンプル  
 見たら分かる感じなので中身を書き換えてconf.yamlにリネームする  
