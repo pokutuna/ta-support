@@ -1,5 +1,8 @@
 require 'rake/clean'
 
+task :default => :all
+task :all => [:download, :exec]
+
 @srcs = FileList["R#{ENV['R']}/**/*.java"]
 @classes = @srcs.ext('class')
 
@@ -8,7 +11,7 @@ rule '.class' => '.java' do |t|
 end
 
 desc 'download documents with report number'
-file :download do |x, args|
+task :download do
   sh "ruby downloader.rb R#{ENV['R']}"
 end
 
