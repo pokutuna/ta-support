@@ -7,9 +7,8 @@ mechanize、rakeに依存
 `git clone http://github.com:pokutuna/ta-support.git`  
 こうすればバージョン管理された本体が落ちてくる、ダウンロードから落として展開するより楽  
 
-
 `sh setup.sh`  
-でrubygemsインストールして依存するgemを落としてくる 
+でrubygemsインストールして依存するgemを落としてくる  
 
 ## アップデート
 `git pull`  
