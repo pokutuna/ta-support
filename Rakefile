@@ -7,7 +7,7 @@ task :all => [:download, :exec]
 @classes = @srcs.ext('class')
 
 rule '.class' => '.java' do |t|
-  sh "javac #{t.source}"
+  sh "javac -J-Dfile.encoding=UTF-8 #{t.source}"
 end
 
 desc 'download documents with report number'
