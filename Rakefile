@@ -1,7 +1,6 @@
 require 'rake/clean'
 
 task :default => :all
-task :all => [:download, :exec]
 
 @srcs = FileList["R#{ENV['R']}/**/*.java"]
 @classes = @srcs.ext('class')
@@ -25,5 +24,10 @@ file :exec => @classes do
   end
 end
 
+desc 'download & exec'
+task :all do
+  Rake::Task[:download].invoke
+  Rake::Task[:exec].invoke
+end
 
 
