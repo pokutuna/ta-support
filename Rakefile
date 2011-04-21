@@ -19,7 +19,7 @@ desc 'exec each class file with classpath'
 file :exec => @classes do
   @classes.sort.each do |c|
     p = File.split(c)
-    sh "java -cp #{p[0]} #{p[1].sub(/\.class$/, '')} || echo failed!"
+    sh "java -cp #{p[0]} -Dfile.encoding=UTF-8 #{p[1].sub(/\.class$/, '')} || echo failed!"
     STDIN.gets
   end
 end
