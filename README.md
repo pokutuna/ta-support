@@ -4,8 +4,11 @@ mechanize、rakeに依存
 
 # 学内で動かす
 `$ git config --global http.proxy "http://proxy.ksc.kwansei.ac.jp:8080"`  
-`$ git clone http://github.com:pokutuna/ta-support.git`  
-こうすればバージョン管理された本体が落ちてくる、ダウンロードから落として展開するより楽  
+`$ git clone http://github.com/pokutuna/ta-support.git` 
+こうすればバージョン管理された本体が落ちてくる、ダウンロードから落として展開するより楽
+
+`$ git config --global http.sslVerify false`  
+cygwinでSSLエラーが出る場合はこの設定してから再度cloneする  
 
 `$ cd ta-support`  
 `$ sh ./setup.sh`  
