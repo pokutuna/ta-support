@@ -5,6 +5,7 @@ require 'mechanize'
 require 'fileutils'
 require 'yaml'
 require 'time'
+require 'tmpdir'
 
 def exit_with_message
   puts 'this downloader needs a arg like'
@@ -25,11 +26,7 @@ end
 
 def mk_dirs
   @downdir = File.expand_path FileUtils.mkdir_p(@conf['download_to'] + @target, {:verbose => true}).first
-  @tmpdir = File.expand_path FileUtils.mkdir_p(@conf['download_to'] + 'tmp' + Time.now.to_i.to_s, {:verbose => true}).first
-end
-
-def rm_tmpdir
-  FileUtils.rm_r(@tmpdir, {:verbose => true})
+  @tmpdir = File.expand_path File.join(Dir.tmpdir, 'ta-support' + Time.now.to_i.to_s)
 end
 
 def download
@@ -75,13 +72,9 @@ end
 
 load_config
 mk_dirs
-begin
-  download
-  diff = diff_dir(@downdir, @tmpdir)
-  cp_all(diff)
-ensure
-  rm_tmpdir
-end
+download
+diff = diff_dir(@downdir, @tmpdir)
+cp_all(diff)
 
 
 
