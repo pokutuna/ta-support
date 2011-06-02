@@ -15,6 +15,8 @@ end
 
 exit_with_message if ARGV.length != 1
 @target = ARGV[0]
+@target = 'EX' if @target == 'REX'
+
 puts ARGV
 
 def load_config
